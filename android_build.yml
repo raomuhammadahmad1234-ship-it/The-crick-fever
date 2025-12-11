@@ -1,0 +1,30 @@
+name: Build Godot Android APK
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Godot
+      uses: firebelley/setup-godot@v1
+      with:
+        version: "3.5.2"
+        mono: false
+        export_templates: true
+
+    - name: Export Android APK
+      run: godot --export "Android" build.apk
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: TheCrickFever-APK
+        path: build.apk
