@@ -1,0 +1,4 @@
+; Godot 3.5.2 project
+[application]
+config/name="The Crick Fever"
+run/main_scene="res://scenes/Main.tscn"
